@@ -9,7 +9,7 @@ from azure.eventhub import EventHubProducerClient, EventData
 app = func.FunctionApp()
  
 # Trigger del Timer, se ejecutará cada 5 minutos
-@app.timer_trigger(arg_name="mytimer", schedule="*/5 * * * *")  # Cada 5 minutos
+@app.timer_trigger(arg_name="mytimer", schedule="*/5 * * * * *")  # Cada 5 minutos
 def streaming_weather_timer(mytimer: func.TimerRequest):
  
     # Lógica para consumir la API de OpenWeatherMap
