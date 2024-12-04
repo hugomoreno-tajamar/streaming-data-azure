@@ -32,7 +32,7 @@ def streaming_weather_timer(mytimer: func.TimerRequest):
  
         # Crear un productor para enviar los datos a Event Hub
         event_hub_conn_str = os.getenv('EVENT_HUB_CONNECTION_STRING')
-        event_hub_name = "streamingeventsf2fa3d1e9a"  # Nombre del Event Hub definido en Azure
+        event_hub_name = "streamingevents-f2fa3d1e9a"  # Nombre del Event Hub definido en Azure
  
         producer = EventHubProducerClient.from_connection_string(conn_str=event_hub_conn_str, eventhub_name=event_hub_name)
        
@@ -45,7 +45,7 @@ def streaming_weather_timer(mytimer: func.TimerRequest):
         logging.error(f"Error al obtener los datos de OpenWeatherMap: {response.status_code}")
  
 # Trigger del Event Hub, procesará los eventos recibidos
-@app.event_hub_message_trigger(arg_name="azeventhub", event_hub_name="streamingeventsf2fa3d1e9a",
+@app.event_hub_message_trigger(arg_name="azeventhub", event_hub_name="streamingevents-f2fa3d1e9a",
                                connection="EVENT_HUB_CONNECTION_STRING")
 def streaming_weather_trigger(azeventhub: func.EventHubEvent):
     logging.info('Python EventHub trigger processed an event: %s',
